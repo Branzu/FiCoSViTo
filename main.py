@@ -1,3 +1,5 @@
+# Fi.Co? S.Vi.To.! A Fishing Company Simulation and Visualization Tool - Ver. 1.0"- main.py
+
 import streamlit as st
 from business_logic import ElaboratoreDati
 from input import GestoreInputManuale, GeneratoreDatiStorici

@@ -1,3 +1,4 @@
+# Fi.Co? S.Vi.To.! A Fishing Company Simulation and Visualization Tool - Ver. 1.0"- data_viz.py
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -9,7 +10,6 @@ from datetime import date, datetime
 from crea_mappa_zone_pesca import GestoreMappa
 from streamlit_folium import folium_static
 
-# Questa classe gestisce la visualizzazione di grafici, tabelle e mappe utilizzando i dati elaborati
 class GestoreVisualizzazioneDati:
 
     def __init__(self, elaboratore_dati, gestore_mappa):

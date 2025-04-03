@@ -1,3 +1,5 @@
+# Fi.Co? S.Vi.To.! A Fishing Company Simulation and Visualization Tool - Ver. 1.0"- crea_mappa_zone_pesca.py
+
 import fiona
 import geopandas as gpd
 from shapely.geometry import Polygon, Point

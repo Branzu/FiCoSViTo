@@ -1,3 +1,5 @@
+# Fi.Co? S.Vi.To.! A Fishing Company Simulation and Visualization Tool - Ver. 1.0"- business_logic.py
+
 from collections import defaultdict
 
 class ElaboratoreDati:
