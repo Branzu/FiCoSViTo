@@ -1,0 +1,16 @@
+[
+  {
+    "data": "2025-04-03",
+    "zona": "Adriatico",
+    "kg": 100.0,
+    "tipo": "Acciuga",
+    "prezzo_medio": 2.5,
+    "stress": 1,
+    "eta_coltura": "giovane",
+    "omogeneita": 1,
+    "allevamento_selvatico": "selvatico",
+    "meteo": 0.36,
+    "scarto": 26.89,
+    "netto": 73.11
+  }
+]
