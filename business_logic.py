@@ -224,7 +224,7 @@ class ElaboratoreDati:
 
         return qualita_per_tipo
 
-    def calculate_daily_metrics(self, records):
+    def calcola_metriche_giornaliere(self, records):
         ''' Calcola le metriche giornaliere (quantità, prezzo medio, qualità media). '''
         total_kg = sum(float(r.get("kg", 0)) for r in records)
         prezzo_medio = sum(float(r.get("prezzo_medio", 0)) for r in records) / len(records) if records else 0

@@ -81,8 +81,8 @@ class GestoreVisualizzazioneDati:
         # Calcola il netto e lo scarto
         summary = self.elaboratore_dati.calcola_netto_scarto(record_preparati)
         # Prendi i totali dalla riga "Totale" del DataFrame
-        totale_netto = float(self.get_total_from_summary(summary, "netto"))
-        totale_scarto = float(self.get_total_from_summary(summary, "scarto"))
+        totale_netto = float(self.crea_totale_da_sommario(summary, "netto"))
+        totale_scarto = float(self.crea_totale_da_sommario(summary, "scarto"))
         # Verifica se ci sono dati per il grafico
         if totale_netto + totale_scarto == 0:
             st.warning("Nessun dato disponibile per il grafico a torta.")
@@ -103,7 +103,7 @@ class GestoreVisualizzazioneDati:
             # Visualizza i totali di scarto e netto
             st.markdown(f"<p style='text-align:center; font-size:24px'>Scarto: <b>{totale_scarto:.2f} kg</b> – Netto: <b>{totale_netto:.2f} kg</b></p>", unsafe_allow_html=True)
 
-    def get_total_from_summary(self, summary, key):
+    def crea_totale_da_sommario(self, summary, key):
         """ Estrae il valore totale da un dizionario di riepilogo. """
         return summary.get("Totale", {}).get(key, 0)
 
@@ -304,7 +304,7 @@ class GestoreVisualizzazioneDati:
             # Filtra i record per il giorno selezionato
             record_giornalieri = [r for r in record_simulati if GestoreFiltroDati.parse_date(r) == data_inizio]
             # Calcola le metriche giornaliere
-            metriche_giornaliere = self.elaboratore_dati.calculate_daily_metrics(record_giornalieri)
+            metriche_giornaliere = self.elaboratore_dati.calcola_metriche_giornaliere(record_giornalieri)
             # Aggiunge i dati al dizionario
             dati_giornalieri.append({
                 "Data": data_inizio,
@@ -323,7 +323,7 @@ class GestoreVisualizzazioneDati:
                 # Filtra i record per il giorno corrente
                 record_giornalieri = [r for r in record_simulati if GestoreFiltroDati.parse_date(r) == single_date]
                 # Calcola le metriche giornaliere
-                metriche_giornaliere = self.elaboratore_dati.calculate_daily_metrics(record_giornalieri)
+                metriche_giornaliere = self.elaboratore_dati.calcola_metriche_giornaliere(record_giornalieri)
                 # Aggiunge i dati al dizionario
                 dati_giornalieri.append({
                     "Data": single_date,
