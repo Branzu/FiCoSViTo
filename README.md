@@ -2,19 +2,19 @@
 
 ![App Screenshot](https://github.com/Branzu/FicCoSViTo/blob/main/screenshot.png)
 
-**Fi.Co? S.Vi.To.!** è uno strumento di simulazione e visualizzazione per la gestione di una compagnia di pesca. L'applicazione permette di creare un archivio di dati storici, inserire dati manuali, simulare il riciclo degli scarti e lavorazione intensiva, e di visualizzare metriche come costi, utili, qualità e impatto ambientale.
+**Fi.Co? S.Vi.To.!** è uno strumento innovativo di simulazione e visualizzazione per la gestione di una piccola azienda operante nel settore ittico e della pesca. Si tratta di una dashboard interattiva con metriche basate su input storici e manuali, generazione di sotrico accurato con elementi randomizzati di distribuzione, visualizzazione dei dati per periodo e slider per la simulazione della variazione dei valori rappresentati.
 
 ## Caratteristiche Principali
 
-*   **Generazione di Dati Storici:** Simula dati storici di pesca su un arco di 5 anni, con variazioni casuali basate su specie, zona di pesca e condizioni meteo.
-*   **Input Manuale:** Permette l'inserimento manuale di campioni di pesca con dettagli su zona, specie, peso, stress, età, omogeneità, tipo di produzione (allevamento/selvatico) e prezzo medio.
+*   **Generazione di Dati Storici:** Simula dati storici di pesca su un arco di 5 anni, basandosi su valori di riferimento con variazioni casuali basate su specie, zona di pesca e condizioni meteo.
+*   **Input Manuale:** Permette l'inserimento manuale di campioni di pesce per simulare andamenti differenti rispetto a quelli proposti dallo storico.
 *   **Visualizzazione Dati:**
-    *   **Mappa Interattiva:** Mostra la distribuzione dei campioni nelle diverse zone di pesca.
-    *   **Grafici a Torta e a Barre:** Analizza la distribuzione di netto e scarto, e le quantità per tipo di pesce.
-    *   **Grafico dei Costi:** Visualizza i costi di produzione, l'utile lordo e il prezzo finale per tipo di pesce.
-    *   **Indicatore di Qualità:** Fornisce un indice di qualità del prodotto, sia per tipo di pesce che globale.
-    *   **Grafico Temporale:** Mostra l'andamento di quantità, prezzo e qualità nel tempo.
-    *   **Tabelle Riassuntive:** Presenta dati aggregati in tabelle.
+    *   **Mappa Interattiva:** mostra la distribuzione dei campioni nelle diverse zone di pesca.
+    *   **Grafici a Torta e a Barre:** analizza la distribuzione di netto e scarto, e le quantità per tipo di pesce.
+    *   **Grafico dei Costi:** visualizza i costi di produzione, l'utile lordo e il prezzo finale per tipo di pesce.
+    *   **Indicatore di Qualità:** fornisce un indice di qualità del prodotto, sia per tipo di pesce che globale.
+    *   **Grafico Temporale:** mostra l'andamento di quantità, prezzo e qualità nel tempo.
+    *   **Tabelle Riassuntive:** presenta dati aggregati in tabelle.
 *   **Simulazione:**
     *   **Riciclo Scarti:** Simula l'impatto del riciclo degli scarti sulla quantità di scarto e sui costi di produzione.
     *   **Lavorazione Intensiva:** Simula l'effetto della lavorazione intensiva sull'utile netto e sulla qualità del prodotto.
@@ -74,5 +74,5 @@
 
 ## Licenza
 
-Questo progetto è rilasciato sotto la licenza [Inserisci il tipo di licenza, ad esempio MIT].
+Questo progetto è rilasciato sotto la licenza GPL-3.0.
 
