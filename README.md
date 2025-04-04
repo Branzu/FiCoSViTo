@@ -1,6 +1,6 @@
 # Fi.Co? S.Vi.To.! - Fishing Company Simulation and Visualization Tool
 
-![App Screenshot](https://github.com/Branzu/FicCo_SViTo/screenshot.png)
+![App Screenshot](https://github.com/Branzu/FicCoSViTo/screenshot.png)
 
 **Fi.Co? S.Vi.To.!** è uno strumento di simulazione e visualizzazione per la gestione di una compagnia di pesca. L'applicazione permette di creare un archivio di dati storici, inserire dati manuali, simulare il riciclo degli scarti e lavorazione intensiva, e di visualizzare metriche come costi, utili, qualità e impatto ambientale.
 
