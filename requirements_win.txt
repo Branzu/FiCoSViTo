@@ -1,0 +1,9 @@
+streamlit==1.26.0
+pandas
+matplotlib
+geopandas
+fiona
+shapely
+folium
+streamlit_folium
+python-dateutil
