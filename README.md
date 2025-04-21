@@ -66,6 +66,7 @@
 *   `manual_data.json`: File JSON per la memorizzazione dei dati inseriti manualmente.
 *   `historical_data.json`: File JSON per la memorizzazione dei dati storici generati.
 *   `requirements.txt`: Elenco delle dipendenze del progetto.
+*   `UML.txt e UML.png`: Diagrammi UML del progetto e delle classi e funzioni che lo compongono
 * `README.md`: Questo file.
 
 ## Autore
