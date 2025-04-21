@@ -1,0 +1,155 @@
+@startuml
+!theme plain
+skinparam classAttributeIconSize 0
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+hide empty members
+
+package "Main Application" <<Frame>> {
+    class Main <<script>> {
+        + main()
+    }
+}
+
+package "Business Logic" <<Folder>> {
+    class ElaboratoreDati {
+        + chiave_record(record)
+        + calcola_netto_scarto(records)
+        + calcola_delta_footer(original, simulated)
+        + prepara_dati_storici(records)
+        + applica_simulazione_ai_record(records, riciclo_pct, lavorazione_pct)
+        + calcola_sommario_costi(records)
+        + calcola_indice_qualita(records)
+        + calcola_metriche_giornaliere(records)
+        + calcola_e_simula_dati(prepared_records, riciclo_val, lavorazione_val)
+    }
+}
+
+package "Input Handling" <<Folder>> {
+    class GestoreInputManuale {
+        - zone: list
+        - SPECIE: list
+        + render_input_manuali()
+        + viz_record_manuali()
+        + reset_record_manuali()
+        + salva_record_manuali(records)
+        + carica_record_manuali()
+    }
+
+    class GeneratoreDatiStorici {
+        - zone: list
+        - SPECIE: list
+        - PREZZI_STORICI: dict
+        + genera_dati_storici(data_inizio, data_fine)
+        + salva_dati_storici(records)
+        + genera_indice_meteo()
+        + genera_peso(species, meteo)
+        ' ... altri metodi di generazione ...
+    }
+}
+
+package "Mapping" <<Folder>> {
+    class GestoreMappa {
+        - percorso_gpkg: str
+        + carica_eez_ita()
+        + suddividi_eez_ita(eez_italiane)
+        + crea_mappa_custom(gdf, conti_zone, schema_colori)
+        + conta_campioni_zone(prodotti)
+        + trova_punti_etichette(geom, posizione)
+    }
+}
+
+package "Data Visualization & UI" <<Folder>> {
+    class GestoreVisualizzazioneDati {
+        - elaboratore_dati: ElaboratoreDati
+        - gestore_mappa: GestoreMappa
+        + visualizza_mappa(record_finali)
+        + visualizza_grafico_torta(record_preparati)
+        + visualizza_grafico_barre(record_preparati)
+        + visualizza_grafico_costi(record_simulati)
+        + visualizza_indicatore_qualita(record_simulati)
+        + visualizza_grafico_temporale(record_simulati, data_inizio, data_fine)
+        ' ... altri metodi di visualizzazione e helper ...
+    }
+
+    class GestoreFiltroDati {
+        + seleziona_intervallo_date()
+        + {static} parse_date(record)
+        + filtra_record_per_data(records, data_inizio, data_fine)
+    }
+
+    class GestoreSimulazione {
+        - elaboratore_dati: ElaboratoreDati
+        + visualizza_metriche_footer(record_preparati, record_simulati, scarto, lavorazione)
+        + visualizza_indicatori_circolarita(scarto, lavorazione)
+        ' ... altri metodi helper ...
+    }
+
+    class GestoreDati {
+        - generatore_storico: GeneratoreDatiStorici
+        - gestore_input_manuale: GestoreInputManuale
+        - elaboratore_dati: ElaboratoreDati
+        + carica_dati()
+        + aggiorna_dati_storici(record_storici)
+        + unisci_dati(record_storici, record_manuali)
+    }
+
+    class GestoreLayoutPagina {
+        + configura_pagina()
+        + visualizza_header()
+        + crea_griglia()
+        + visualizza_footer()
+        ' ... altri metodi di layout ...
+    }
+
+    class GestoreSidebar {
+        - generatore_storico: GeneratoreDatiStorici
+        - gestore_input_manuale: GestoreInputManuale
+        - gestore_dati: GestoreDati
+        + visualizza_sidebar()
+    }
+}
+
+' --- Relazioni Principali ---
+
+' Main orchestra tutto
+Main ..> ElaboratoreDati : uses >
+Main ..> GestoreInputManuale : uses >
+Main ..> GeneratoreDatiStorici : uses >
+Main ..> GestoreMappa : uses >
+Main ..> GestoreVisualizzazioneDati : uses >
+Main ..> GestoreFiltroDati : uses >
+Main ..> GestoreSimulazione : uses >
+Main ..> GestoreDati : uses >
+Main ..> GestoreLayoutPagina : uses >
+Main ..> GestoreSidebar : uses >
+
+' Gestori UI/Dati aggregano altre classi
+GestoreDati o--> GeneratoreDatiStorici
+GestoreDati o--> GestoreInputManuale
+GestoreDati o--> ElaboratoreDati
+
+GestoreSidebar o--> GeneratoreDatiStorici
+GestoreSidebar o--> GestoreInputManuale
+GestoreSidebar o--> GestoreDati
+
+GestoreVisualizzazioneDati o--> ElaboratoreDati
+GestoreVisualizzazioneDati o--> GestoreMappa
+
+GestoreSimulazione o--> ElaboratoreDati
+
+' Dipendenze specifiche
+GestoreInputManuale ..> ElaboratoreDati : uses chiave_record >
+GestoreVisualizzazioneDati ..> GestoreFiltroDati : uses parse_date >
+
+' --- Interazioni Esterne (Note) ---
+note right of GestoreMappa : Interacts with\nGeoPandas, Folium, Fiona,\nGPKG file
+note right of GestoreVisualizzazioneDati : Interacts with\nStreamlit, Pandas,\nMatplotlib, Folium
+note right of GestoreFiltroDati : Interacts with\nStreamlit, Datetime
+note right of GestoreSimulazione : Interacts with\nStreamlit
+note right of GestoreLayoutPagina : Interacts with\nStreamlit
+note right of GestoreSidebar : Interacts with\nStreamlit
+note right of GestoreInputManuale : Interacts with\nStreamlit, JSON file (manual_data.json)
+note right of GeneratoreDatiStorici : Interacts with\nJSON file (historical_data.json)
+
+@enduml
